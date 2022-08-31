@@ -7,8 +7,8 @@ public class VariablesTheme {
         System.out.println("Максимальная частота процессора (МГц): " + cpuFreq);
         int gpuFreq = 1500;
         System.out.println("Максимальная частота графического процессора (МГц): " + gpuFreq);
-        long numKeys = 12345678012345678L;
-        System.out.println("Клавиши цифр на клавиатуре:" + numKeys);
+        long bigNum = 12345678012345678L;
+        System.out.println("Можно напечатать число:" + bigNum);
         float price = 45000.230f;
         System.out.println("Цена: " + price);
         double pi = 3.141592653;
@@ -58,5 +58,85 @@ public class VariablesTheme {
         System.out.println("longMum++ " + longNumInc);
         long longNunDec = (long)longNum - 1;
         System.out.println("longNum-- " + longNunDec);
+
+        System.out.println("\n5. Перестановка значений переменных\n");
+        int num1 = 5;
+        int num2 = 2;
+        System.out.println("\nПерестановка с помощью дополнительной переменной\n");
+        System.out.println("До перстановки: ");
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2);
+        int tmp = num1;
+        num1 = num2;
+        num2 = tmp;
+        System.out.println("\nПосле перестановки: ");
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2);
+        System.out.println("\nПерестановка с помощью арифметических опрераций\n");
+        System.out.println("До перстановки: ");
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2);
+        int sum = num1 + num2;
+        num1 -= sum;
+        num2 -= sum;
+        System.out.println("\nПосле перестановки: ");
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2);
+        System.out.println("\nПерстановка с помощью побитовой операции\n");
+        System.out.println("До перстановки: ");
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2);
+        num1 = sum ^ num1;
+        num2 = sum ^ num2;
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2);
+
+        System.out.println("\n6. Вывод символов и их кодов");
+        char cod1 = 35;
+        char cod2 = 38;
+        char cod3 = 64;
+        char cod4 = 94;
+        char cod5 = 95;
+        System.out.println((int) cod1 + " = " + cod1);
+        System.out.println((int) cod2 + " = " + cod2);
+        System.out.println((int) cod3 + " = " + cod3);
+        System.out.println((int) cod4 + " = " + cod4);
+        System.out.println((int) cod5 + " = " + cod5);
+
+        System.out.println("\n7. Отображение количества сотен, десятков и единиц числа\n");
+        int num = 123;
+        System.out.println(num / 100 + " Сотня");
+        System.out.println(num / 10 % 10 + " Десятка");
+        System.out.println(num % 10 + " Единицы");
+
+        System.out.println("\n8. Вывод на консоль ASCII-арт Дюка\n");
+        char slash = 47;
+        char slash2 = 92;
+        char space = 32;
+        char bracket = 40;
+        char bracket2 = 41;
+        char underscore = 95;
+        System.out.println("    " + slash + "" + slash2);
+        System.out.println("   " + slash + "  " + slash2);
+        System.out.println("  " + slash + "" + underscore + "" + bracket + "" + space +
+            bracket2 + "" + slash2);
+        System.out.println(space + "" + slash + "      " + slash2);
+        System.out.println(slash + "" + "" + underscore + "" + "" + underscore + "" + underscore + "" +
+            "" + underscore + "" + slash + "" + slash2 + "" + underscore + "" + underscore + "" + slash2);
+
+        System.out.println("\n9. Произведение и сумма цифр числа\n");
+        int num3  = 345;
+        int hundreds = num3 / 100;
+        int dozens = num3 / 10 % 10;
+        int units = num3 % 10;
+        System.out.println("Суммф цифр числа N равна " + hundreds + dozens + units);
+        System.out.println("Произведение цифр числа N равна " + hundreds * dozens * units);
+
+        System.out.println("\n10. Преобразование секунд\n");
+        int seconds = 86399;
+        int hours = seconds / 3600;
+        int minuts = (seconds - hours * 3600) / 60;
+        int sec = seconds % 60;
+        System.out.println(hours + ":" + minuts + ":" + sec);
     }
 }
