@@ -16,7 +16,7 @@ public class VariablesTheme {
         System.out.println("Диагональ экрана (дюйм): " + screenDiagonal);
         char rizenVersion = '5';
         System.out.println("Версия процессора AMD Ryzen: " + rizenVersion);
-        boolean good = true;
+        boolean grey = true;
         System.out.println("Компьютер хороший? " + good);
 
         System.out.println("\n2. Расчет стоимости товара со скидкой\n");
@@ -115,7 +115,7 @@ public class VariablesTheme {
         System.out.println(space + "" + space + "" +slash + "" + underscore + "" + oBracket + "" +
                 space + cBracket + "" + backslash);
         System.out.println(space + "" + slash + "" + space + "" + space + "" + space + "" + space + 
-                "" + space + "" + space + "" + backslash);
+                "" + space + "" + space + ""+ backslash);
         System.out.println(slash + "" + "" + underscore + "" + "" + underscore + "" + underscore + 
                 "" + "" + underscore + "" + slash + "" + backslash + "" + underscore + "" + 
                 underscore + "" + backslash);
