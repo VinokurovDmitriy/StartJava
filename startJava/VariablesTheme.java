@@ -9,15 +9,15 @@ public class VariablesTheme {
         int gpuFreq = 1500;
         System.out.println("Максимальная частота графического процессора (МГц): " + gpuFreq);
         long capacityHdd = 256000L;
-        System.out.println("Ёмкость жесткогоо диска (Мб):" + capacityHdd);
+        System.out.println("Ёмкость жесткого диска (Мб):" + capacityHdd);
         float price = 45000.230f;
         System.out.println("Цена: " + price);
         double screenDiagonal = 15.6;
         System.out.println("Диагональ экрана (дюйм): " + screenDiagonal);
         char rizenVersion = '5';
         System.out.println("Версия процессора AMD Ryzen: " + rizenVersion);
-        boolean grey = true;
-        System.out.println("Компьютер хороший? " + good);
+        boolean isGray = true;
+        System.out.println("Компьютер серого цвета? " + isGray);
 
         System.out.println("\n2. Расчет стоимости товара со скидкой\n");
         float costPen = 100;
@@ -26,7 +26,7 @@ public class VariablesTheme {
         float discountSum = (costPen + costBook) * discount / 100;
         System.out.println("Размер скидки: " + discountSum);
         float discountPrice = costPen + costBook - discountSum;
-        System.out.println("Cтоимость товаров со скидкой: " + discountPrice);
+        System.out.println("Стоимость товаров со скидкой: " + discountPrice);
 
         System.out.println("\n3. Вывод на консоль слова Java\n");
         System.out.println("   J    a  v     v  a    ");
@@ -37,50 +37,50 @@ public class VariablesTheme {
         System.out.println("\n4. Отображение min и max значений числовых типов данных\n");
         byte byteNum = 127;
         System.out.println("byte " + byteNum);
-        System.out.println("byte++ " + (byteNum + 1));
-        System.out.println("byte -- " + (byteNum - 1));
+        System.out.println("byte++ " + (++byteNum));
+        System.out.println("byte -- " + (--byteNum));
         short shortNum = 32767;
         System.out.println("short " + shortNum);
-        System.out.println("short++ " + (shortNum + 1));
-        System.out.println("short-- " + (shortNum - 1));
+        System.out.println("short++ " + (++shortNum));
+        System.out.println("short-- " + (--shortNum));
         int intNum = 2147483647;
         System.out.println("int " + intNum);
-        System.out.println("int++ " + (intNum + 1));
-        System.out.println("int-- " + (intNum - 1));
+        System.out.println("int++ " + (++intNum));
+        System.out.println("int-- " + (--intNum));
         long longNum = 9223372036854775807L;
         System.out.println("longNum " + longNum);
-        System.out.println("longMum++ " + (longNum + 1));
-        System.out.println("longNum-- " + (longNum - 1));
-        System.out.println("\n5. Перестановка значений переменных\n");
+        System.out.println("longMum++ " + (++longNum));
+        System.out.println("longNum-- " + (--longNum));
+        System.out.println("\n\n5. Перестановка значений переменных\n");
         int num1 = 5;
         int num2 = 2;
-        System.out.println("Перестановка с помощью дополнительной переменной");
-        System.out.println("\nДо перестановки: ");
+        System.out.println("\nПерестановка с помощью дополнительной переменной");
+        System.out.println("\nДо перестановки: \n");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
         int tmp = num1;
         num1 = num2;
         num2 = tmp;
-        System.out.println("\nПосле перестановки: ");
+        System.out.println("\nПосле перестановки: \n");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
-        System.out.println("\nПерестановка с помощью арифметических опрераций");
-        System.out.println("\nДо перестановки: ");
+        System.out.println("\n\nПерестановка с помощью арифметических опрераций");
+        System.out.println("\nДо перестановки: \n");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
         tmp = num1 + num2;
         num1 = tmp - num1;
         num2 = tmp - num2;
-        System.out.println("\nПосле перестановки: ");
+        System.out.println("\nПосле перестановки: \n");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
-        System.out.println("\nПерестановка с помощью побитовой операции");
-        System.out.println("\nДо перестановки: ");
+        System.out.println("\n\nПерестановка с помощью побитовой операции");
+        System.out.println("\nДо перестановки: \n");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
         num1 = tmp ^ num1;
         num2 = tmp ^ num2;
-        System.out.println("\nПосле перестановки: ");
+        System.out.println("\nПосле перестановки: \n");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
 
@@ -109,16 +109,12 @@ public class VariablesTheme {
         char oBracket = 40;
         char cBracket = 41;
         char underscore = 95;
-        System.out.println(space + "" + space + "" + space + "" + space + "" + slash + "" + backslash);
-        System.out.println(space + "" + space + "" + space + "" + slash + "" + space + "" + space + 
-                "" + backslash);
-        System.out.println(space + "" + space + "" +slash + "" + underscore + "" + oBracket + "" +
-                space + cBracket + "" + backslash);
-        System.out.println(space + "" + slash + "" + space + "" + space + "" + space + "" + space + 
-                "" + space + "" + space + ""+ backslash);
-        System.out.println(slash + "" + "" + underscore + "" + "" + underscore + "" + underscore + 
-                "" + "" + underscore + "" + slash + "" + backslash + "" + underscore + "" + 
-                underscore + "" + backslash);
+        System.out.println("" + space + space + space + space + slash + backslash);
+        System.out.println("" + space + space + space + slash + space + space + backslash);
+        System.out.println("" + space + space + slash + underscore + oBracket + space + cBracket + backslash);
+        System.out.println("" + space + slash + space + space + space + space + space + space + backslash);
+        System.out.println("" + slash + underscore + underscore + underscore + underscore + slash + 
+                backslash + underscore + underscore + backslash);
 
         System.out.println("\n9. Произведение и сумма цифр числа\n");
         int num3  = 345;
