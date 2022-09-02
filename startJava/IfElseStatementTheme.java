@@ -35,7 +35,6 @@ public class IfElseStatementTheme {
         System.out.println("\n2. Поиск max и min числа\n");
         int num1 = 5;
         int num2 = 9;
-
         if(num1 > num2) {
             System.out.println("max = " + num1 + ", min = " + num2);
         } else if(num1 < num2) {
@@ -43,6 +42,91 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Оба числа равны " + num1);
         }
+
+        System.out.println("\n3. Работа с числом\n");
+        int num3 = -642;
+        if(num3 == 0) {
+            System.out.println("Число равно 0");
+        } else {
+            if(num3 > 0) {
+                System.out.println("Число " + num3 + " положительное");
+            } else {
+                System.out.println("Число " + num3 + " отрицательное");
+            }
+
+            if(num3 % 2 == 1){
+                System.out.println("Число " + num3 + " не четное");
+            } else {
+                System.out.println("Число " + num3 + " четное");
+            }
+        }
+
+        System.out.println("\n4. Поиск одинаковых цифр в числах\n");
+        int num4 = 235;
+        int num5 = 235;
+        System.out.println("Первое число " + num4 + "\nВторое число " + num5);
+        if(num4 / 100 == num5 / 100) {
+            System.out.println("В обоих числах одинаковые цифры " + (num4 / 100) + " расположены в сотнях");
+        }
+
+        if(num4 % 100 / 10 == num5 % 100 / 10) {
+            System.out.println("В обоих числах одинаковые цифры " + (num4 % 100 / 10) + " расположены в десятках");
+        }
+
+        if(num4 % 10 == num5 % 10) {
+            System.out.println("В обоих числах одинаковые цифры " + (num4 % 10) + " расположены в единицах");
+        }
+
+        System.out.println("\n5. Определение буквы, числа или символа по их коду\n");
+        char symbol = '\u0057';
+        int symbolDec = (int) symbol;
+        if(symbolDec >= 97 && symbolDec <= 122) {
+            System.out.println("Символ " + symbol + " маленькая буква");
+        } else if(symbolDec >= 65 && symbolDec <= 90) {
+            System.out.println("Символ " + symbol + " большая буква");
+        } else if(symbolDec >= 48 && symbolDec <= 57) {
+            System.out.println("Символ " + symbol + " цифра");
+        } else {
+            System.out.println("Символ " + symbol + " не букваа и не число");
+        }
+
+        System.out.println("\n6. Определение суммы вклада и начисленных банком %\n");
+        float deposit = 300000f;
+        float percent = 10;
+        if(deposit < 100000) {
+            percent = 5;
+        } else if(deposit >=100000 && deposit <= 300000) {
+            percent = 7;
+        } 
+
+        float percentSum = deposit / 100 * percent;
+        System.out.println("Сумма вклада " + deposit + "\nНачислено процентов " + percentSum + 
+                "\nИтого с учетом процентов " + (deposit + percentSum));
+
+        System.out.println("\n7. Определение оценки по предметам\n");
+        int historyPercent = 59;
+        int historyGrade = 2;
+        if(historyPercent > 91) {
+            historyGrade = 5;
+        } else if(historyPercent > 73) {
+            historyGrade = 4;
+        } else if(historyPercent > 60) {
+            historyGrade = 3;
+        }
+
+        int programmingPercent = 91;
+        int programmingGrade = 2;
+        if(programmingPercent >91) {
+            programmingGrade = 5;
+        } else if(programmingPercent > 73) {
+            programmingGrade = 4;
+        } else if(programmingPercent > 60) {
+            programmingGrade = 3;
+        }
+
+        System.out.println(historyGrade + " История\n" + programmingGrade + " Программирование");
+        System.out.println("Средний балл по предметам " + ((programmingGrade + historyGrade) / 2));
+        System.out.println("Средний процент " + ((programmingPercent + historyPercent) / 2));
 
     }
 }

@@ -51,36 +51,39 @@ public class VariablesTheme {
         System.out.println("longNum " + longNum);
         System.out.println("longMum++ " + (++longNum));
         System.out.println("longNum-- " + (--longNum));
-        System.out.println("\n\n5. Перестановка значений переменных\n");
+
+        System.out.println("\n5. Перестановка значений переменных\n");
         int num1 = 5;
         int num2 = 2;
-        System.out.println("\nПерестановка с помощью дополнительной переменной");
-        System.out.println("\nДо перестановки: \n");
+        System.out.println("Перестановка с помощью дополнительной переменной");
+        System.out.println("\nДо перестановки:");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
         int tmp = num1;
         num1 = num2;
         num2 = tmp;
-        System.out.println("\nПосле перестановки: \n");
+        System.out.println("\nПосле перестановки:");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
-        System.out.println("\n\nПерестановка с помощью арифметических опрераций");
-        System.out.println("\nДо перестановки: \n");
+
+        System.out.println("\nПерестановка с помощью арифметических операций");
+        System.out.println("\nДо перестановки:");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
         tmp = num1 + num2;
         num1 = tmp - num1;
         num2 = tmp - num2;
-        System.out.println("\nПосле перестановки: \n");
+        System.out.println("\nПосле перестановки:");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
-        System.out.println("\n\nПерестановка с помощью побитовой операции");
-        System.out.println("\nДо перестановки: \n");
+
+        System.out.println("\nПерестановка с помощью побитовой операции");
+        System.out.println("\nДо перестановки:");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
         num1 = tmp ^ num1;
         num2 = tmp ^ num2;
-        System.out.println("\nПосле перестановки: \n");
+        System.out.println("\nПосле перестановки:");
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
 
