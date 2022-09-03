@@ -20,7 +20,7 @@ public class IfElseStatementTheme {
         if(height < 1.8) {
             System.out.println("Тебе можно покупать одежду в \"Детском мире\"");
         } else {
-            System.out.println("Одежду твоего размера не найти в магазтнах для лиллипутов");
+            System.out.println("Одежду твоего размера не найти в магазинах для лилипутов");
         }
 
         char firstLetterName = "Вася".charAt(0);
@@ -62,7 +62,7 @@ public class IfElseStatementTheme {
         }
 
         System.out.println("\n4. Поиск одинаковых цифр в числах\n");
-        int num4 = 235;
+        int num4 = 936;
         int num5 = 235;
         System.out.println("Первое число " + num4 + "\nВторое число " + num5);
         if(num4 / 100 == num5 / 100) {
@@ -80,14 +80,15 @@ public class IfElseStatementTheme {
         System.out.println("\n5. Определение буквы, числа или символа по их коду\n");
         char symbol = '\u0057';
         int symbolDec = (int) symbol;
+        System.out.print("Символ " + symbol);
         if(symbolDec >= 97 && symbolDec <= 122) {
-            System.out.println("Символ " + symbol + " маленькая буква");
+            System.out.println(" маленькая буква");
         } else if(symbolDec >= 65 && symbolDec <= 90) {
-            System.out.println("Символ " + symbol + " большая буква");
+            System.out.println(" большая буква");
         } else if(symbolDec >= 48 && symbolDec <= 57) {
-            System.out.println("Символ " + symbol + " цифра");
+            System.out.println(" цифра");
         } else {
-            System.out.println("Символ " + symbol + " не букваа и не число");
+            System.out.println(" не букваа и не число");
         }
 
         System.out.println("\n6. Определение суммы вклада и начисленных банком %\n");
@@ -128,5 +129,34 @@ public class IfElseStatementTheme {
         System.out.println("Средний балл по предметам " + ((programmingGrade + historyGrade) / 2));
         System.out.println("Средний процент " + ((programmingPercent + historyPercent) / 2));
 
+        System.out.println("\n8. Расчет прибыли\n");
+        float monthRentValue = 5000f;
+        float monthRevenue = 13000f;
+        float costOfGoods = 9000f;
+        float annualProfit = (monthRevenue - costOfGoods - monthRentValue) * 12;
+        System.out.print("Прибыль за год: ");
+        if(annualProfit > 0) {
+            System.out.print("+");
+        }
+        System.out.println(annualProfit);
+
+        System.out.println("\n9.Подсчет количества банкнот\n");
+        int moneySum = 567;
+        int countHundredBanknotes = moneySum / 100;
+        int countDozenBanknotes = 5;
+        int countSingleBanknotes = moneySum % 10;
+        int checkMoneySum = countHundredBanknotes * 100 + countDozenBanknotes * 10 + countSingleBanknotes;
+        int missingAmount = moneySum - checkMoneySum;
+        if(moneySum > checkMoneySum) {
+            if(missingAmount >= 100){
+                countDozenBanknotes = missingAmount / 10;
+            } else if(missingAmount >= 10) {
+                countSingleBanknotes += missingAmount; 
+            }
+        }
+        System.out.println(countHundredBanknotes + " сотенных банкнот,\n" + countDozenBanknotes +
+                " банкнот по 10$\n" + countSingleBanknotes + " банкнот по 1$");
+        System.out.println("Требуемая сумма " + (countHundredBanknotes * 100 + countDozenBanknotes * 10
+                + countSingleBanknotes));
     }
 }
