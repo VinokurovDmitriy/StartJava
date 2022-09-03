@@ -79,13 +79,12 @@ public class IfElseStatementTheme {
 
         System.out.println("\n5. Определение буквы, числа или символа по их коду\n");
         char symbol = '\u0057';
-        int symbolDec = (int) symbol;
         System.out.print("Символ " + symbol);
-        if(symbolDec >= 97 && symbolDec <= 122) {
+        if(symbol >= 97 && symbol <= 122) {
             System.out.println(" маленькая буква");
-        } else if(symbolDec >= 65 && symbolDec <= 90) {
+        } else if(symbol >= 65 && symbol <= 90) {
             System.out.println(" большая буква");
-        } else if(symbolDec >= 48 && symbolDec <= 57) {
+        } else if(symbol >= 48 && symbol <= 57) {
             System.out.println(" цифра");
         } else {
             System.out.println(" не букваа и не число");
