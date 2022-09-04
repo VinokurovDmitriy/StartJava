@@ -41,6 +41,7 @@ public class CyclesTheme {
         for (i = max - 1; i > min; i--) {
             System.out.print(i + " ");
         }
+        System.out.println();
 
         System.out.println("\n3. Вывод реверсивного числа и суммы его цифр\n");
         int num4 = 1234;
@@ -83,5 +84,105 @@ public class CyclesTheme {
             System.out.print(" не ");
         }
         System.out.println("четное количество единиц");
+        System.out.println("\n6. Отображение фигур в консоли\n");
+        //Прямоугольник
+        for(i = 0; i < 5; i++) {
+            System.out.println("**********");
+        }
+        System.out.println();
+
+        // //Прямоугольный треугольник
+        i = 5;
+        while(i > 0) {
+            System.out.printf( "%" + i + "." + i + "s%n", "#####");
+                i--;
+            }
+        System.out.println();
+
+        //Равнобедренный треугольник
+        i = 0;
+        int j = 0;
+        do {
+            if(i < 3) {
+                j++;
+            } else {
+                j--;
+            }
+            i++;
+            System.out.printf("%" + j + "." + j + "s%n", "$$$");
+        } while(i < 5);
+        System.out.println();
+
+        System.out.println("\n7. Отображение ANSII символов\n");
+        //Символы до цифр
+        System.out.println("Dec Char");
+        for(i = 33; i < 48; i += 2) {
+            System.out.printf("%3s", i);
+            System.out.printf("%5s%n", (char) i);
+        }
+        System.out.println();
+
+        //маленькие английские буквы
+        System.out.println("Dec Char");
+        for(i = 98; i <=122; i += 2) {
+            System.out.printf("%3s", i);
+            System.out.printf("%5s%n", (char) i);
+        }
+
+        System.out.println("\n8. Проверка является ли число палиндромом\n");
+        int numOrigin = 1234321;
+        int numCopy = numOrigin;
+        int divider = 1000000;
+        boolean isPalindrome = true;
+        while(numCopy > 0) {
+            if(numCopy % 10 != numCopy / divider) {
+                isPalindrome= false;
+            }
+            numCopy = numCopy % divider / 10;
+            divider /= 100;
+        }
+        if(isPalindrome) {
+            System.out.println("Число " + numOrigin + " является палиндромом");
+        } else {
+            System.out.println("Число " + numOrigin + " не является палиндромом");
+        }
+
+        System.out.println("\nОпределение, является ли число счастливым\n");
+        int num6 = 345264;
+        int sumLeftPart = 0;
+        int sumRightPart = 0;
+        int leftPart = num6 / 1000;
+        int rightPart = num6 % 1000;
+        while(leftPart > 0) {
+            sumLeftPart += leftPart % 10;
+            leftPart /= 10;
+            sumRightPart += rightPart % 10;
+            rightPart /= 10;
+        }
+
+        System.out.println("Сумма цифр " + num6 / 1000 + " = " + sumLeftPart);
+        System.out.println("Сумма цифр " + num6 % 1000 + " = " + sumRightPart);
+        if(sumLeftPart == sumRightPart) {
+            System.out.println("Число " + num6 + " является счастливым");
+        } else {
+            System.out.println("Число " + num6 + " не является счастливым");
+        }
+
+        System.out.println("\n10. Вывод таблицы умножения Пифагора\n");
+        System.out.println("   ТАБЛИЦА ПИФАГОРА");
+        System.out.print(" |");
+        for(i = 2; i < 10; i++) {
+            System.out.printf("%3s", i);
+        }
+
+        System.out.println();
+        System.out.println("----------------------------");
+        for(i = 2; i < 10; i++) {
+            System.out.printf("%2s", i + "|");
+            for(j = 2; j < 10; j++) {
+                System.out.printf("%3s", i * j);
+            }
+            System.out.println();
+        }
     }
 }
