@@ -147,7 +147,7 @@ public class CyclesTheme {
             System.out.println("Число " + numOrigin + " не является палиндромом");
         }
 
-        System.out.println("\nОпределение, является ли число счастливым\n");
+        System.out.println("\n9. Определение, является ли число счастливым\n");
         int num6 = 345264;
         int sumLeftPart = 0;
         int sumRightPart = 0;
