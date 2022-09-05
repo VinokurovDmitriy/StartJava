@@ -129,17 +129,15 @@ public class CyclesTheme {
 
         System.out.println("\n8. Проверка является ли число палиндромом\n");
         int originNum = 1234321;
-        int divider = 1000000;
         copyNum = originNum;
-        boolean isPalindrome = true;
+        int reverseNum = 0;
+        int multiple = 1;
         while(copyNum > 0) {
-            if(copyNum % 10 != copyNum / divider) {
-                isPalindrome= false;
-            }
-            copyNum = copyNum % divider / 10;
-            divider /= 100;
+            reverseNum += copyNum % 10 * multiple;
+            copyNum /= 10;
+            multiple *= 10;
         }
-        if(isPalindrome) {
+        if(originNum == reverseNum) {
             System.out.println("Число " + originNum + " является палиндромом");
         } else {
             System.out.println("Число " + originNum + " не является палиндромом");
