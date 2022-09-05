@@ -96,8 +96,8 @@ public class CyclesTheme {
         i = 5;
         while(i > 0) {
             System.out.printf( "%" + i + "." + i + "s%n", "#####");
-                i--;
-            }
+            i--;
+        }
         System.out.println();
 
         //Равнобедренный треугольник
