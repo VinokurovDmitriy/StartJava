@@ -1,74 +1,85 @@
 import java.util.Scanner;
-import java.io.IOException;
+import java.util.InputMismatchException;
 
 public class Calculator {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int firstNum = 0;
-        String operationSymbol = "";
-        int secondNum = 0;
+        int num1 = 0;
         boolean num1IsCorrect = false;
-        while(num1IsCorrect == false) {
+        while(!num1IsCorrect) {
             try {
-            System.out.print("Введите первое целое число: ");
-            String num1 = scanner.nextLine();
-            firstNum = Integer.parseInt(num1);
-            num1IsCorrect = true;
-            } catch (Exception e) {
+                System.out.print("Введите первое целое число: ");
+                num1 = scanner.nextInt();
+                num1IsCorrect = true;
+            } catch (InputMismatchException e) {
                 System.out.println("Введите корректно первое число");
+                scanner.nextLine();
             }
         }
 
+        int num2 = 0;
         boolean num2IsCorrect = false;
-        while(num2IsCorrect == false) {
+        while(!num2IsCorrect) {
             try {
                 System.out.print("Введите второе целое число: ");
-                String num2 = scanner.nextLine();
-                secondNum = Integer.parseInt(num2);
+                num2 = scanner.nextInt();
                 num2IsCorrect = true;
-            } catch (Exception e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Введите корректно второе число");
+                scanner.nextLine();
             }
         }
 
-        float test = 0f;
-        boolean operationSymbolIsCorrect;
+        boolean operationIsCorrect;
+        float quotient = 0;
+        char operation = ' ';
+        int result = 0;
         do {
-            operationSymbolIsCorrect = true;
+            operationIsCorrect = true;
             System.out.print("Введите знак (+, -, *, /, ^ или %): ");
-            operationSymbol = scanner.nextLine();
-            switch(operationSymbol) {
-            case "+": 
-                System.out.println(firstNum + " + " + secondNum + " = " + (firstNum + secondNum));
+            try {
+                operation = (char) System.in.read();
+            } catch(java.io.IOException e) {
+                System.out.println("Введите символ из списка");
+            }
+
+            switch(operation) {
+            case '+': 
+                result = num1 + num2;
                 break;
-            case "-":
-                System.out.println(firstNum + " - " + secondNum + " = " + (firstNum - secondNum));
+            case '-':
+                result = num1 - num2;
                 break;
-            case "*":
-                System.out.println(firstNum + " * " + secondNum + " = " + (firstNum * secondNum));
+            case '*':
+                result = num1 * num2;
                 break;
-            case "/":
-                if(secondNum != 0) {
-                    System.out.println(firstNum + " / " + secondNum + " = " + (((float) firstNum) / secondNum));
+            case '/':
+                if(num2 != 0) {
+                    quotient = ((float) num1) / num2;
                 } else {
                    System.out.println("Вы ввели второе число 0 и выбрали знак /. Делить на 0 нельзя");
+                   operationIsCorrect = false;
                 }
                 break;
-            case "^":
-                int result = firstNum;
-                for(int i = 2; i <= secondNum; i++) {
-                    result *= firstNum;
+            case '^':
+                result = num1;
+                for(int i = 2; i <= num2; i++) {
+                    result *= num1;
                 }
-                System.out.println(firstNum + " ^ " + secondNum + " = " + result);
                 break;
-            case "%":
-                System.out.println(firstNum + " % " + secondNum + " = " + (firstNum % secondNum));
+            case '%':
+                result = num1 % num2;
                 break;
             default:
                 System.out.println("Введите знак корректно");
-                operationSymbolIsCorrect = false;
+                operationIsCorrect = false;
             }
-        } while(operationSymbolIsCorrect == false);
+        } while(!operationIsCorrect);
+        if(operation == '/' && num2 != 0) {
+            System.out.println(num1 + " / " + num2 + " = " + quotient);
+        } else {
+            System.out.println(num1 + " " + operation + " " + num2 + " = " + result);
+        }
     }
 }

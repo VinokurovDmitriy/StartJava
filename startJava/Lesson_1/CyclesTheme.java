@@ -131,11 +131,10 @@ public class CyclesTheme {
         int originNum = 1234321;
         copyNum = originNum;
         int reverseNum = 0;
-        int multiple = 1;
         while(copyNum > 0) {
-            reverseNum += copyNum % 10 * multiple;
+            int lastDigit = copyNum % 10;
+            reverseNum = reverseNum * 10 + lastDigit;
             copyNum /= 10;
-            multiple *= 10;
         }
         if(originNum == reverseNum) {
             System.out.println("Число " + originNum + " является палиндромом");
