@@ -9,12 +9,12 @@ public class MyFirstGame {
         Random rnd = new Random();
         int hiddenNum = rnd.nextInt(100) + 1;
         int inputNum = 0;
-        int count = 0;
+        int countAttempts = 0;
         do {
             boolean numIsCorrect = false;
             while(!numIsCorrect) {
+                System.out.print("Введите целое число: ");
                 try {
-                    System.out.print("Введите целое число: ");
                     inputNum = scanner.nextInt();
                     numIsCorrect = true;
                 } catch (InputMismatchException e) {
@@ -22,14 +22,13 @@ public class MyFirstGame {
                     scanner.nextLine();
                 }
             }
-            count++;
+            countAttempts++;
             if(inputNum > hiddenNum) {
                 System.out.println("\nЧисло " + inputNum + " больше того, что загадал компьютер\n");
             } else if(inputNum < hiddenNum) {
                 System.out.println("\nЧисло " + inputNum + " меньше того, что загадал компьютер\n");
-            } else {
-                System.out.println("\nВы угадали за " + count + " попыток. Загаданное число " + hiddenNum);
             }
         } while(inputNum != hiddenNum);
+        System.out.println("\nВы угадали за " + countAttempts + " попыток. Загаданное число " + hiddenNum);
     }
 }
