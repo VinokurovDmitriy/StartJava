@@ -76,6 +76,7 @@ public class Calculator {
                 operationIsCorrect = false;
             }
         } while(!operationIsCorrect);
+        
         if(operation == '/' && num2 != 0) {
             System.out.println(num1 + " / " + num2 + " = " + quotient);
         } else {
