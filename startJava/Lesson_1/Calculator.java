@@ -1,48 +1,15 @@
-import java.util.Scanner;
-import java.util.InputMismatchException;
+import java.util.*;
 
 public class Calculator {
 
-    private static void printInputMessage(String index) {
-        System.out.print("Введите " + index + " целое число: ");
-    }
-
-    private static void printWarningMessage(String index) {
-        System.out.println("Введите корректно " + index + " число");
-    }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int num1 = 0;
-        boolean num1IsCorrect = false;
-        while(!num1IsCorrect) {
-            printInputMessage("первое");
-            try {
-                num1 = scanner.nextInt();
-                num1IsCorrect = true;
-            } catch (InputMismatchException e) {
-                printWarningMessage("первое");
-                scanner.nextLine();
-            }
-        }
-
-        int num2 = 0;
-        boolean num2IsCorrect = false;
-        while(!num2IsCorrect) {
-            printInputMessage("второе");
-            try {
-                num2 = scanner.nextInt();
-                num2IsCorrect = true;
-            } catch (InputMismatchException e) {
-                printWarningMessage("второе");
-                scanner.nextLine();
-            }
-        }
-
+        float num1 = inputNum("первое", scanner);
+        float num2 = inputNum("второе", scanner);
         boolean operationIsCorrect;
         float quotient = 0;
         char operation = ' ';
-        int result = 0;
+        float result = 0;
         do {
             operationIsCorrect = true;
             System.out.print("Введите знак (+, -, *, /, ^ или %): ");
@@ -64,7 +31,7 @@ public class Calculator {
                     break;
                 case '/':
                     if(num2 != 0) {
-                        quotient = ((float) num1) / num2;
+                        result =  num1 / num2;
                     } else {
                        System.out.println("Вы ввели второе число 0 и выбрали знак /. Делить на 0 нельзя");
                        operationIsCorrect = false;
@@ -86,9 +53,25 @@ public class Calculator {
         } while(!operationIsCorrect);
 
         if(operation == '/' && num2 != 0) {
-            System.out.println(num1 + " / " + num2 + " = " + quotient);
+            System.out.println(num1 + " / " + num2 + " = " + result);
         } else {
             System.out.println(num1 + " " + operation + " " + num2 + " = " + result);
         }
     }
+
+    private static float inputNum(String index, Scanner scanner) {
+        boolean numIsCorrect = false;
+        float num = 0f;
+        while (!numIsCorrect) { 
+            System.out.print("Введите " + index + " число: ");
+            try {
+                num = scanner.nextFloat();
+                numIsCorrect = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Введите корректно " + index + " число");
+                scanner.nextLine();
+            }
+        } 
+        return num;
+    }      
 }
