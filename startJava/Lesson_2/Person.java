@@ -21,7 +21,7 @@ public class Person {
         System.out.println("run 5 meters");
     }
 
-    void sitDown() {
+    void sit() {
         System.out.println("Sit");
     }
 
