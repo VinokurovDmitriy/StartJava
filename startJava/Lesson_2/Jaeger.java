@@ -8,6 +8,17 @@ public class Jaeger {
     private int strength; 
     private int armor;
     
+    Jaeger(String modelName, String mark, String origin, float weight, float height, int strength,
+            int armor) {
+        this.modelName = modelName;
+        this.mark = mark;
+        this.origin = origin;
+        this.weight = weight; 
+        this.height = height;
+        this.strength = strength;
+        this.armor = armor;
+    }
+
     public String getModelName() {
         return modelName;
     }
@@ -72,17 +83,6 @@ public class Jaeger {
         height = 10f;
         strength = 10;
         armor = 10;
-    }
-
-    Jaeger(String modelName, String mark, String origin, float weight, float height, int strength,
-            int armor) {
-        this.modelName = modelName;
-        this.mark = mark;
-        this.origin = origin;
-        this.weight = weight; 
-        this.height = height;
-        this.strength = strength;
-        this.armor = armor;
     }
 
     public boolean drift() {
