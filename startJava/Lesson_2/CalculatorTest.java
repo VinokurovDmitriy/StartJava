@@ -1,14 +1,12 @@
 import java.util.Scanner;
-import java.util.*;
+import java.util.InputMismatchException;
+import java.lang.StringIndexOutOfBoundsException;
 
 public class CalculatorTest {
-
-    Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
-        boolean enought = false;
         String reply = "yes";
         while(!reply.equals("no")) {
             if(reply.equals("yes")){
@@ -25,29 +23,33 @@ public class CalculatorTest {
 
     private static float inputNum(String index) {
         Scanner scanner = new Scanner(System.in);
-        boolean numIsCorrect = false;
+        boolean correct = false;
         float num = 0f;
-        while (!numIsCorrect) {
+        while (!correct) {
             System.out.print("Введите " + index + " число: ");
             try {
                 num = scanner.nextFloat();
-                numIsCorrect = true;
+                correct = true;
             } catch (InputMismatchException e) {
                 System.out.println("Введите корректно " + index + " число");
-                scanner.nextLine();
-            }
+                scanner.nextLine();        }
         } 
         return num;
     }
 
     private static char inputOperation() {
+        Scanner scanner = new Scanner(System.in);
         char operation = ' ';
+        boolean correct = false;
         System.out.print("Введите знак (+, -, *, /, ^ или %): ");
+        while(!correct) {
             try {
-                operation = (char) System.in.read();
-            } catch(java.io.IOException e) {
-                System.out.println("Введите символ из списка");
+             operation = scanner.nextLine().charAt(0);
+             correct = true;
+            } catch (StringIndexOutOfBoundsException e) {
+                System.out.println("Введите знак операции корректно");
             }
+        }
         return operation;
     }
 }
