@@ -44,8 +44,8 @@ public class CalculatorTest {
         System.out.print("Введите знак (+, -, *, /, ^ или %): ");
         while(!correct) {
             try {
-             operation = scanner.nextLine().charAt(0);
-             correct = true;
+                operation = scanner.nextLine().charAt(0);
+                correct = true;
             } catch (StringIndexOutOfBoundsException e) {
                 System.out.println("Введите знак операции корректно");
             }
