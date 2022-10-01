@@ -10,9 +10,9 @@ public class CalculatorTest {
         String reply = "yes";
         while(!reply.equals("no")) {
             if(reply.equals("yes")){
-                float num1 = inputNum("первое");
-                char operation = inputOperation();
-                float num2 = inputNum("второе");
+                float num1 = inputNum("первое", scanner);
+                char operation = inputOperation(scanner);
+                float num2 = inputNum("второе", scanner);
                 float result = calculator.calculate(num1, num2, operation);
                 System.out.println(num1 + " " + operation + " " + num2 + " = " + result);
             }
@@ -21,8 +21,7 @@ public class CalculatorTest {
         }
     }
 
-    private static float inputNum(String index) {
-        Scanner scanner = new Scanner(System.in);
+    private static float inputNum(String index, Scanner scanner) {
         boolean correct = false;
         float num = 0f;
         while (!correct) {
@@ -32,13 +31,13 @@ public class CalculatorTest {
                 correct = true;
             } catch (InputMismatchException e) {
                 System.out.println("Введите корректно " + index + " число");
-                scanner.nextLine();        }
+                scanner.nextLine();
+            }
         } 
         return num;
     }
 
-    private static char inputOperation() {
-        Scanner scanner = new Scanner(System.in);
+    private static char inputOperation(Scanner scanner) {
         char operation = ' ';
         boolean correct = false;
         System.out.print("Введите знак (+, -, *, /, ^ или %): ");

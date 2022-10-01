@@ -11,7 +11,7 @@ public class JaegerTest {
         acidGeisha.setArmor(10);
         System.out.println(acidGeisha.getModelName() + " made in " + acidGeisha.getOrigin());
         System.out.println("This Jaeger is " + acidGeisha.getMark() + " and this model is " + 
-                acidGeisha.getHeight() + " height and " + acidGeisha.getWeight() + " weight and strangth " + 
+                acidGeisha.getHeight() + " height\nand " + acidGeisha.getWeight() + " weight and strangth " + 
                 acidGeisha.getStrength() + " and have armor " + acidGeisha.getArmor());
         System.out.print(acidGeisha.getModelName() + " ");
         acidGeisha.move();

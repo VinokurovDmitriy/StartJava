@@ -7,9 +7,19 @@ public class Jaeger {
     private float height;
     private int strength; 
     private int armor;
-    
-    Jaeger(String modelName, String mark, String origin, float weight, float height, int strength,
-            int armor) {
+
+    Jaeger() {
+        modelName = "default";
+        mark = "unknown";
+        origin = "unknown";
+        weight = 10f;
+        height = 10f;
+        strength = 10;
+        armor = 10;
+    }
+
+    Jaeger(String modelName, String mark, String origin, float weight,
+            float height, int strength, int armor) {
         this.modelName = modelName;
         this.mark = mark;
         this.origin = origin;
@@ -75,30 +85,19 @@ public class Jaeger {
         this.armor = armor;
     }
 
-    Jaeger() {
-        modelName = "default";
-        mark = "unknown";
-        origin = "unknown";
-        weight = 10f;
-        height = 10f;
-        strength = 10;
-        armor = 10;
-    }
-
     public boolean drift() {
         return true;
     }
 
     public void move() {
-        System.out.print("Moving\n");
+        System.out.println("Moving");
     }
 
     public void scanKaiju() {
-        System.out.print("Scanning\n");
+        System.out.println("Scanning");
     }
 
     public void attack() {
-        System.out.print(modelName + " attacks\n");
+        System.out.println(modelName + " attacks");
     }
-
 }
