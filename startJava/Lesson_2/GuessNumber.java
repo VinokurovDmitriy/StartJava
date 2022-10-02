@@ -33,8 +33,8 @@ class GuessNumber {
         int hiddenNum = rnd.nextInt(100) + 1;
         System.out.println("Да начнётся новая игра!\n");
         int playerNum = 0;
+        Player currentPlayer = player2;
         do {
-            Player currentPlayer = player2;
             currentPlayer = currentPlayer == player1 ? player2 : player1;
             String playerName = currentPlayer.getName();
             System.out.print(playerName + " введите число: ");
