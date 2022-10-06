@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3.guess;
+
 import java.util.Random;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -18,8 +20,8 @@ class GuessNumber {
         System.out.println("Да начнётся новая игра!\n");
         int playerNum = 0;
         String playerName = "";
+        Player currentPlayer = null;
         do {
-            Player currentPlayer = null;
             currentPlayer = currentPlayer == player1 ? player2 : player1;
             playerName = currentPlayer.getName();
             System.out.print(playerName + " введите число: ");

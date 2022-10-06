@@ -1,3 +1,5 @@
+package com.startjava.lesson_1.fin;
+
 import java.util.Scanner;
 import java.util.Random;
 import java.util.InputMismatchException;
@@ -11,12 +13,12 @@ public class MyFirstGame {
         int inputNum = 0;
         int countAttempts = 0;
         do {
-            boolean numIsCorrect = false;
-            while(!numIsCorrect) {
+            boolean correct = false;
+            while(!correct) {
                 System.out.print("Введите целое число: ");
                 try {
                     inputNum = scanner.nextInt();
-                    numIsCorrect = true;
+                    correct = true;
                 } catch (InputMismatchException e) {
                     System.out.println("Введите корректно число\n");
                     scanner.nextLine();
