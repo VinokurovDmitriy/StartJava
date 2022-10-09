@@ -43,7 +43,6 @@ public class ArrayTheme {
         double middleItem = doubleArr[len / 2];
 
         int countZero = 0;
-
         for(int i = 0; i < len; i++) {
             if(doubleArr[i] > middleItem) {
                 doubleArr[i] = 0;
@@ -146,9 +145,9 @@ public class ArrayTheme {
 
     private static int getUniqueValue(int[] arr) {
         int newValue = (int) (60 + Math.random() * 40);
-        for (int i = 0; i < arr.length; i++) {
-            if(arr[i] == newValue) {
-                arr[i] = getUniqueValue(arr);
+        for (int j : arr) {
+            if (j == newValue) {
+                return getUniqueValue(arr);
             }
         }
         return newValue;
