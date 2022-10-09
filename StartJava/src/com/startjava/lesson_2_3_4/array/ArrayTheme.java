@@ -43,7 +43,6 @@ public class ArrayTheme {
         double middleItem = doubleArr[len / 2];
 
         int countZero = 0;
-
         for(int i = 0; i < len; i++) {
             if(doubleArr[i] > middleItem) {
                 doubleArr[i] = 0;
