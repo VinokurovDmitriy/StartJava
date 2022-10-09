@@ -121,7 +121,6 @@ public class ArrayTheme {
             System.arraycopy(srcArr, emptyPos[i] + 1, destArr, destPos, countEl);
             destPos = i + countEl;
         }
-
         printStringArr(srcArr, "Исходный массив: ");
         printStringArr(destArr, "Модифицированный массив: ");
     }
