@@ -146,9 +146,9 @@ public class ArrayTheme {
 
     private static int getUniqueValue(int[] arr) {
         int newValue = (int) (60 + Math.random() * 40);
-        for (int i = 0; i < arr.length; i++) {
-            if(arr[i] == newValue) {
-                arr[i] = getUniqueValue(arr);
+        for (int j : arr) {
+            if (j == newValue) {
+                return getUniqueValue(arr);
             }
         }
         return newValue;
