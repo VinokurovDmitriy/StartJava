@@ -2,49 +2,48 @@ package com.startjava.lesson_2_3_4.array;
 
 public class ArrayTheme {
     public static void main(String[] args) {
-        int len;
-        int tempVar;
 
         System.out.println("1. Реверс значений массива.");
         int[] intArr = {3, 5, 2, 7, 4, 1, 6};
-        len = intArr.length;
+        int len = intArr.length;
         printIntArr(intArr, "Исходный массив: ");
 
-        for(int i = 0; i < len / 2; i++) {
-            int rightIndex = len - 1 - i;
-            tempVar = intArr[i];
-            intArr[i] = intArr[rightIndex];
-            intArr[rightIndex] = tempVar;
+        for(int i = 0; i <= len / 2; i++) {
+            len--;
+            int temp = intArr[i];
+            intArr[i] = intArr[len];
+            intArr[len] = temp;
         }
-        printIntArr(intArr, "\nРазвернутый массив: ");
+        printIntArr(intArr, "\nРеверсивный массив: ");
 
         System.out.println("\n2. Вывод произведения элементов массива.");
         intArr = new int[10];
-        int multiple = 1;
+        int mult = 1;
 
         for(int i = 0; i < 10; i++) {
             intArr[i] = i;
-            multiple *= (i != 0 && i != 9) ? intArr[i] : 1;
-            System.out.print(i > 0 && i < 9 ? intArr[i] : "");
-            System.out.print(( i > 0 && i < 8 ? " * "  : ""));
+            mult *= (i != 0 && i != 9) ? intArr[i] : 1;
+            if(i > 0) {
+                System.out.print((i < 9 ? intArr[i] : "") + (i < 8 ? " * "  : ""));
+            }
         }
-        System.out.println(" = " + multiple);
+        System.out.println(" = " + mult);
         System.out.println("первый элемент массива: " + intArr[0] +
                 "\nпоследний элемент массива: " + intArr[intArr.length - 1]);
 
         System.out.println("\n3. Удаление элементов массива\n");
+
         double[] doubleArr = new double[15];
         len = doubleArr.length;
-
         for(int i = 0; i < len; i++) {
             doubleArr[i] = Math.random();
         }
         printDoubleArr(doubleArr, "Исходный массив: ");
-        double middleItem = doubleArr[len / 2];
+        double middleNum = doubleArr[len / 2];
 
         int countZero = 0;
         for(int i = 0; i < len; i++) {
-            if(doubleArr[i] > middleItem) {
+            if(doubleArr[i] > middleNum) {
                 doubleArr[i] = 0;
                 countZero++;
             }
@@ -60,7 +59,7 @@ public class ArrayTheme {
             alphabet[i] = (char) j;
         }
 
-        for(int i = 0; i < len; i++){
+        for(int i = 0; i < len; i++) {
             for(int j = len - 1; j >= len - 1 - i; j--) {
                 System.out.print(alphabet[j]);
             }
@@ -72,15 +71,15 @@ public class ArrayTheme {
         len = intArr.length;
 
         for(int i = 0; i < len; i++) {
-            intArr[i] = getUniqueValue(intArr);
+            intArr[i] = getUniqueNum(intArr);
         }
 
         for(int i = len - 1; i >= 0; i--) {
             for(int j = 0; j < i; j++) {
                 if(intArr[j] > intArr[j + 1]) {
-                    tempVar = intArr[j];
+                    int temp = intArr[j];
                     intArr[j] = intArr[j + 1];
-                    intArr[j + 1] = tempVar;
+                    intArr[j + 1] = temp;
                 }
             }
         }
@@ -97,45 +96,40 @@ public class ArrayTheme {
         len = srcArr.length;
 
         //Определяем количество пустых элементов
-        int countEmptyEl = 0;
+        int countEmptyStr = 0;
         for(int i = 0; i < len; i++) {
-            if(srcArr[i].isBlank()) {
-                countEmptyEl++;
-            }
+            if(srcArr[i].isBlank()) countEmptyStr++;
         }
-
-        //записываем индексы пустых элементов в массив
-        int[] emptyPos = new int[countEmptyEl];
-        int emptyPosIndex = 0;
-        for(int i = 0; i < len; i++) {
-            if(srcArr[i].isBlank()) {
-                emptyPos[emptyPosIndex++] = i;
-            }
-        }
-
-        String[] destArr = new String[len - countEmptyEl];
+        String[] destArr = new String[len - countEmptyStr];
         int destPos = 0;
-        for(int i = 0; i < emptyPos.length - 1; i++) {
-            int countEl = emptyPos[i + 1] - emptyPos[i] - 1;
-            System.arraycopy(srcArr, emptyPos[i] + 1, destArr, destPos, countEl);
-            destPos = i + countEl;
+        int countEl = 0;
+        for(int i = 0; i < srcArr.length; i++) {
+            if(!srcArr[i].isBlank()) {
+                countEl++;
+            } else {
+                if(countEl > 0) {
+                    System.arraycopy(srcArr, i - countEl, destArr, destPos, countEl);
+                    destPos += countEl;
+                }
+                countEl = 0;
+            }
         }
         printStringArr(srcArr, "Исходный массив: ");
         printStringArr(destArr, "Модифицированный массив: ");
     }
 
-    private static void printIntArr(int[] arr, String text) {
-        System.out.println(text);
-        for(int item : arr) {
-            System.out.print(item + " ");
+    private static void printIntArr(int[] arr, String msg) {
+        System.out.println(msg);
+        for(int num : arr) {
+            System.out.print(num + " ");
         }
         System.out.println();
     }
 
-    private static void printDoubleArr(double[] arr, String text) {
-        System.out.println(text);
+    private static void printDoubleArr(double[] arr, String msg) {
+        System.out.println(msg);
         for(int i = 0; i < arr.length; i++) {
-            System.out.printf("%7.5s", arr[i]);
+            System.out.printf("%7.5s", arr[i] == 0 ? "0.000" : arr[i]);
             if(i == 7) {
                 System.out.println();
             }
@@ -143,20 +137,20 @@ public class ArrayTheme {
         System.out.println();
     }
 
-    private static int getUniqueValue(int[] arr) {
-        int newValue = (int) (60 + Math.random() * 40);
-        for (int j : arr) {
-            if (j == newValue) {
-                return getUniqueValue(arr);
+    private static int getUniqueNum(int[] arr) {
+        int newNum = (int) (60 + Math.random() * 40);
+        for (int num : arr) {
+            if (num == newNum) {
+                return getUniqueNum(arr);
             }
         }
-        return newValue;
+        return newNum;
     }
 
-    private static void printStringArr(String[] arr, String text) {
-        System.out.print(text);
-        for(String item : arr) {
-            System.out.print("\"" + item + "\"; ");
+    private static void printStringArr(String[] arr, String msg) {
+        System.out.print(msg);
+        for(String str : arr) {
+            System.out.print("\"" + str + "\"; ");
         }
         System.out.println();
     }
