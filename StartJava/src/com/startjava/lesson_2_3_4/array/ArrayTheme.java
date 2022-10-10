@@ -100,7 +100,6 @@ public class ArrayTheme {
         for(int i = 0; i < len; i++) {
             if(srcArr[i].isBlank()) countEmptyStr++;
         }
-
         String[] destArr = new String[len - countEmptyStr];
         int destPos = 0;
         int countEl = 0;
