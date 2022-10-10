@@ -114,7 +114,6 @@ public class ArrayTheme {
                countEl = 0;
            }
         }
-
         printStringArr(srcArr, "Исходный массив: ");
         printStringArr(destArr, "Модифицированный массив: ");
     }
