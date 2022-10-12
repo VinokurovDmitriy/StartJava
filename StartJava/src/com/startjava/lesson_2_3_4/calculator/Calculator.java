@@ -2,25 +2,22 @@ package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
 
-    public float calculate(float num1, float num2, char operation) {
+    public int calculate(int num1, int num2, char operation) {
         switch(operation) {
-            case '+': 
-                return num1 + num2;
+            case '+':
+                return Math.addExact(num1, num2);
             case '-':
-                return num1 - num2;
+                return Math.subtractExact(num1, num2);
             case '*':
-                return num1 * num2;
+                return Math.multiplyExact(num1, num2);
             case '/':
                 return num1 / num2;
             case '^':
-                float result = num1;
-                for(int i = 2; i <= num2; i++) {
-                    result *= num1;
-                }
-                return result;
+                return (int) Math.pow(num1, num2);
             case '%':
                 return num1 % num2;
+            default:
+                return 0;
         }
-        return 0f;
     }
 }

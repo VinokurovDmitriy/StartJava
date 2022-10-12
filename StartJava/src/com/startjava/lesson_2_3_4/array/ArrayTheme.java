@@ -2,16 +2,14 @@ package com.startjava.lesson_2_3_4.array;
 
 public class ArrayTheme {
     public static void main(String[] args) {
-
         System.out.println("1. Реверс значений массива.");
         int[] intArr = {3, 5, 2, 7, 4, 1, 6};
         int len = intArr.length;
         printIntArr(intArr, "Исходный массив: ");
 
         for(int i = 0; i <= len / 2; i++) {
-            len--;
             int temp = intArr[i];
-            intArr[i] = intArr[len];
+            intArr[i] = intArr[--len];
             intArr[len] = temp;
         }
         printIntArr(intArr, "\nРеверсивный массив: ");
@@ -24,10 +22,10 @@ public class ArrayTheme {
             intArr[i] = i;
             mult *= (i != 0 && i != 9) ? intArr[i] : 1;
             if(i > 0) {
-                System.out.print((i < 9 ? intArr[i] : "") + (i < 8 ? " * "  : ""));
+                System.out.println(intArr[i] + (i < 9 ? " * " : (" = " + mult)));
             }
         }
-        System.out.println(" = " + mult);
+//        System.out.println(" = " + mult);
         System.out.println("первый элемент массива: " + intArr[0] +
                 "\nпоследний элемент массива: " + intArr[intArr.length - 1]);
 
@@ -102,16 +100,16 @@ public class ArrayTheme {
         }
         String[] destArr = new String[len - countEmptyStr];
         int destPos = 0;
-        int countEl = 0;
+        int countStr = 0;
         for(int i = 0; i < srcArr.length; i++) {
             if(!srcArr[i].isBlank()) {
-                countEl++;
+                countStr++;
             } else {
-                if(countEl > 0) {
-                    System.arraycopy(srcArr, i - countEl, destArr, destPos, countEl);
-                    destPos += countEl;
+                if(countStr > 0) {
+                    System.arraycopy(srcArr, i - countStr, destArr, destPos, countStr);
+                    destPos += countStr;
                 }
-                countEl = 0;
+                countStr = 0;
             }
         }
         printStringArr(srcArr, "Исходный массив: ");

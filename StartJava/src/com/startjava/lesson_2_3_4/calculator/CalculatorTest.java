@@ -1,5 +1,6 @@
 package com.startjava.lesson_2_3_4.calculator;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.lang.StringIndexOutOfBoundsException;
@@ -12,46 +13,16 @@ public class CalculatorTest {
         String reply = "yes";
         while(!reply.equals("no")) {
             if(reply.equals("yes")){
-                float num1 = inputNum("первое", scanner);
-                char operation = inputOperation(scanner);
-                float num2 = inputNum("второе", scanner);
+                System.out.print("Введите математическое выражение: ");
+                String[] mathExpression = scanner.nextLine().split(" ");
+                int num1 = Integer.parseInt(mathExpression[0]);
+                int num2 = Integer.parseInt(mathExpression[2]);
+                char operation = mathExpression[1].charAt(0);
                 float result = calculator.calculate(num1, num2, operation);
                 System.out.println(num1 + " " + operation + " " + num2 + " = " + result);
             }
             System.out.print("Хотите продолжить вычисления? [yes/no]: ");
             reply = scanner.nextLine();
         }
-    }
-
-    private static float inputNum(String index, Scanner scanner) {
-        boolean correct = false;
-        float num = 0f;
-        while (!correct) {
-            System.out.print("Введите " + index + " число: ");
-            try {
-                num = scanner.nextFloat();
-                correct = true;
-            } catch (InputMismatchException e) {
-                System.out.println("Введите корректно " + index + " число");
-                scanner.nextLine();
-            }
-        } 
-        return num;
-    }
-
-    private static char inputOperation(Scanner scanner) {
-        char operation = ' ';
-        boolean correct = false;
-        System.out.print("Введите знак (+, -, *, /, ^ или %): ");
-        while(!correct) {
-            try {
-                scanner.nextLine();
-                operation = scanner.next().charAt(0);
-                correct = true;
-            } catch (StringIndexOutOfBoundsException e) {
-                System.out.print("Введите знак операции корректно: ");
-            }
-        }
-        return operation;
     }
 }
