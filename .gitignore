@@ -1,6 +1,7 @@
 *.class
 options
 optionsj
+classes
 out
 .idea
 *.iml

@@ -9,17 +9,12 @@ public class CalculatorTest {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Calculator calculator = new Calculator();
         String reply = "yes";
         while(!reply.equals("no")) {
-            if(reply.equals("yes")){
+            if(reply.equals("yes")) {
                 System.out.print("Введите математическое выражение: ");
-                String[] mathExpression = scanner.nextLine().split(" ");
-                int num1 = Integer.parseInt(mathExpression[0]);
-                int num2 = Integer.parseInt(mathExpression[2]);
-                char operation = mathExpression[1].charAt(0);
-                float result = calculator.calculate(num1, num2, operation);
-                System.out.println(num1 + " " + operation + " " + num2 + " = " + result);
+                String mathExpression = scanner.nextLine();
+                System.out.println(mathExpression + " = " + Calculator.calculate(mathExpression));
             }
             System.out.print("Хотите продолжить вычисления? [yes/no]: ");
             reply = scanner.nextLine();
