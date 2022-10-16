@@ -7,10 +7,10 @@ import java.util.Scanner;
 public class Calculator {
 
     public static int calculate(String mathExpression) {
-        String[] partsExpression = splitInput(mathExpression);
+        String[] partsExpression = mathExpression.split(" ");
         char operation = partsExpression[1].charAt(0);
-        int num1 = getNum(partsExpression, 0);
-        int num2 = getNum(partsExpression, 2);
+        int num1 =  checkNum(partsExpression, 0);
+        int num2 = checkNum(partsExpression, 2);
         return switch (operation) {
             case '+' -> Math.addExact(num1, num2);
             case '-' -> Math.subtractExact(num1, num2);
@@ -22,25 +22,7 @@ public class Calculator {
         };
     }
 
-    public static String checkExpression(String mathExpression) {
-        String[] partsExpression = splitInput(mathExpression);
-        try {
-            int num1 = getNum(partsExpression, 0);
-            int num2 = getNum(partsExpression,2);
-            return (num1 > 0 && num2 > 0) ?
-                    "success" : "Введите положительные целые числа: ";
-        } catch (NumberFormatException e) {
-            return "Введите целые числа: ";
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return "Введите число знак и второе число через пробел: ";
-        }
-    }
-
-    private static String[] splitInput(String input) {
-        return input.split(" ");
-    }
-
-    private static int getNum(String[] parts, int index) {
+    private static int checkNum(String[] parts, int index) {
         return Integer.parseInt(parts[index]);
     }
 }
