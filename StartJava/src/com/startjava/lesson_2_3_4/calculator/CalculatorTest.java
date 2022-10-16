@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class CalculatorTest {
 
-    static final String SUCCESS = "success";
-
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
         String reply = "yes";
@@ -22,9 +20,9 @@ public class CalculatorTest {
                         correct = true;
                     } catch (ArrayIndexOutOfBoundsException e) {
                         System.out.print("Введите число, знак операции и второе число через пробел: ");
-                    } catch (NumberFormatException e){
+                    } catch (NumberFormatException e) {
                         System.out.println("Введите числа корректно: ");
-                    }
+                    } catch (NegativeNumber ignored) {}
                 }
                 System.out.println(mathExpression + " = " + result);
             }
