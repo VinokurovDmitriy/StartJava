@@ -2,13 +2,13 @@ package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
 
-    public static int calculate(String mathExpression) throws NegativeNumber {
+    public static int calculate(String mathExpression) {
         String[] partsExpression = mathExpression.split(" ");
         char operation = partsExpression[1].charAt(0);
         int num1 = checkNum(partsExpression[0]);
         int num2 = checkNum(partsExpression[2]);
         if (num1 < 0 || num2 < 0) {
-            throw new NegativeNumber("Введенные числа должны быть положительными");
+            throw new NegativeNumberException(num1, num2);
         }
         return switch (operation) {
             case '+' -> Math.addExact(num1, num2);

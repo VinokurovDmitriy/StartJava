@@ -22,7 +22,9 @@ public class CalculatorTest {
                         System.out.print("Введите число, знак операции и второе число через пробел: ");
                     } catch (NumberFormatException e) {
                         System.out.println("Введите числа корректно: ");
-                    } catch (NegativeNumber ignored) {}
+                    } catch (NegativeNumberException e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
                 System.out.println(mathExpression + " = " + result);
             }

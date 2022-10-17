@@ -97,7 +97,7 @@ public class CyclesTheme {
         // //Прямоугольный треугольник
         i = 5;
         while(i > 0) {
-            System.out.printf( "%" + i + "." + i + "s%n", "#####");
+            System.out.printf( "%" + i + "" + i + "s%n", "#####");
             i--;
         }
         System.out.println();
@@ -112,7 +112,7 @@ public class CyclesTheme {
                 j--;
             }
             i++;
-            System.out.printf("%" + j + "." + j + "s%n", "$$$");
+            System.out.printf("%" + j + "" + j + "s%n", "$$$");
         } while(i < 5);
 
         System.out.println("\n7. Отображение ASCII символов\n");
