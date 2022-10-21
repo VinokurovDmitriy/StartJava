@@ -7,7 +7,7 @@ public class Player {
     static final int MAX_ATTEMPTS = 10;
     private final String name;
     private final int[] numbers = new int[MAX_ATTEMPTS];
-    private int attempts = 0;
+    private int attempts;
 
     Player(String name) {
         this.name = name;
@@ -15,13 +15,12 @@ public class Player {
 
     public String getName() {return name;}
 
-    public void setNumber(int number) {this.numbers[attempts] = number;}
+    public void addNumber(int number) {
+        numbers[attempts] = number;
+        attempts++;
+    }
 
-    public int getNumber() {return numbers[attempts];}
-
-    public void setAttempts() {attempts++;}
-
-    public void resetAttempts() {attempts = 0;}
+    public int getNumber() {return numbers[attempts - 1];}
 
     public int getAttempts() {return attempts;}
 
@@ -29,7 +28,8 @@ public class Player {
         return Arrays.copyOf(numbers, attempts);
     }
 
-    public void resetNumbers() {
+    public void resetData() {
+        attempts = 0;
         Arrays.fill(numbers, 0, attempts, 0);
     }
 }
