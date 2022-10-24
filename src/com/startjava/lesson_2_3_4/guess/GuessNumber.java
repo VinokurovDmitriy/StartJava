@@ -43,7 +43,7 @@ class GuessNumber {
         player.addNum(inputNumber());
         boolean guessed = checkNum(player.getNum());
         if (!guessed && player.getAttempts() == Player.MAX_ATTEMPTS) {
-            System.out.println("У " + playerName + " закончились попытки");
+            System.out.print("У " + playerName + " закончились попытки");
         }
         return guessed;
     }
@@ -57,7 +57,7 @@ class GuessNumber {
                 num = scanner.nextInt();
                 correct = true;
             } catch (InputMismatchException e) {
-                System.out.println("Введите корректно число\n");
+                System.out.println("Введите корректно число: ");
                 scanner.nextLine();
             }
         }
