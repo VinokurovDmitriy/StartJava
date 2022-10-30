@@ -1,7 +1,5 @@
 package com.startjava.lesson_2_3_4.guess;
 
-import com.startjava.lesson_2_3_4.calculator.NegativeNumberException;
-
 import java.util.Arrays;
 
 public class Player {
@@ -32,13 +30,9 @@ public class Player {
 
     public int[] getNums() {return Arrays.copyOf(nums, attempts);}
 
-    public int getWins() {
-        return wins;
-    }
+    public int getWins() {return wins;}
 
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
+    public void setWins(int wins) {this.wins = wins;}
 
     public void resetData() {
         attempts = 0;
