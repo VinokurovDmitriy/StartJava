@@ -26,7 +26,6 @@ class GuessNumberTest {
 
     private static Player createPlayer(String order) {
         System.out.print("Введите имя " + order + " игрока: ");
-        String name = console.nextLine();
-        return new Player(name);
+        return new Player(console.nextLine());
     }
 }

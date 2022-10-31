@@ -4,20 +4,19 @@ import java.util.Arrays;
 
 public class Player {
 
-    static final int MAX_ATTEMPTS = 10;
-    static final int MAX_NUM = 100;
-    static final int MIN_NUM = 1;
+    static final int END_RANGE = 100;
+    static final int START_RANGE = 1;
     private final String name;
-    private final int[] nums = new int[MAX_ATTEMPTS];
+    private final int[] nums = new int[GuessNumber.MAX_ATTEMPTS];
     private int attempts;
-    private int wins;
+    private int win;
 
     Player(String name) {this.name = name;}
 
     public String getName() {return name;}
 
     public void addNum(int num) {
-        if(num > MAX_NUM || num < MIN_NUM) {
+        if(num > END_RANGE || num < START_RANGE) {
             throw new OutOfRangeException();
         }
         nums[attempts] = num;
@@ -30,9 +29,9 @@ public class Player {
 
     public int[] getNums() {return Arrays.copyOf(nums, attempts);}
 
-    public int getWins() {return wins;}
+    public int getWins() {return win;}
 
-    public void setWins(int wins) {this.wins = wins;}
+    public void setWin(int win) {this.win = win;}
 
     public void resetData() {
         attempts = 0;

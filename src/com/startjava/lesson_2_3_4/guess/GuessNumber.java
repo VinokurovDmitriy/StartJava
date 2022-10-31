@@ -7,40 +7,34 @@ import java.util.Scanner;
 
 class GuessNumber {
 
-    private static Scanner console = new Scanner(System.in);
-    private static Player[] players;
-    private final int MAX_ROUND = 3;
-    private static int round;
+    static int MAX_ATTEMPTS = 10;
+    private final Scanner console = new Scanner(System.in);
+    private Player[] players;
+    private int round;
     private int hiddenNum;
-    private int playerIndex = 0;
 
-    GuessNumber(Player... args) {
-        players = args;
-    }
+    GuessNumber(Player... args) {players = args;}
 
-    public static Player[] getPlayers() {
-        return Arrays.copyOf(players, players.length);
-    }
+    public Player[] getPlayers() {return Arrays.copyOf(players, players.length);}
 
-    public static void setPlayers(Player[] players) {
-        GuessNumber.players = players;
-    }
+    public void setPlayers(Player[] players) {this.players = players;}
 
     public void start() {
         drawLots();
+        int MAX_ROUND = 3;
+        int playerIndex = 0;
         while (round < MAX_ROUND) {
             System.out.println("Раунд " + (round + 1));
-            hiddenNum = (new Random()).nextInt(Player.MAX_NUM) + 1;
+            hiddenNum = (new Random()).nextInt(Player.END_RANGE) + 1;
             Player currentPlayer = players[playerIndex];
             boolean freeAttempts;
             boolean guessed;
             do {
                 guessed = isGuessed(currentPlayer);
                 freeAttempts = checkFreeAttempts();
-                if (guessed) {
-                    currentPlayer.setWins(currentPlayer.getWins() + 1);
-                } else {
-                    currentPlayer = changePlayer(currentPlayer);
+                if(!guessed) {
+                    playerIndex = currentPlayer == players[players.length - 1] ? 0 : playerIndex + 1;
+                    currentPlayer = players[playerIndex];
                 }
             } while (!guessed && freeAttempts);
             printResult(guessed, currentPlayer);
@@ -48,7 +42,7 @@ class GuessNumber {
             if (round == MAX_ROUND) {
                 printWinners();
                 for (Player player : players) {
-                    player.setWins(0);
+                    player.setWin(0);
                 }
             }
             resetPlayersData();
@@ -56,9 +50,9 @@ class GuessNumber {
         }
     }
 
-    public static void drawLots() {
+    public void drawLots() {
         System.out.println("Игроки должны бросить жребий для определения очередности ходов.");
-        Player[] players = GuessNumber.getPlayers();
+        Player[] players = getPlayers();
         for (int i = players.length - 1; i > 0; i--) {
             Player currentPlayer = players[i];
             String name = currentPlayer.getName();
@@ -72,7 +66,7 @@ class GuessNumber {
             }
             System.out.println("Игрок " + name + " ходит " + (lot + 1));
         }
-        GuessNumber.setPlayers(players);
+        setPlayers(players);
     }
 
     private boolean isGuessed(Player player) {
@@ -80,7 +74,9 @@ class GuessNumber {
         System.out.print("Попытка номер " + (player.getAttempts() + 1) + " " + playerName + " введите число: ");
         inputNumber(player);
         boolean guessed = checkNum(player.getNum());
-        if (!guessed && player.getAttempts() == Player.MAX_ATTEMPTS) {
+        if (guessed) {
+            player.setWin(player.getWins() + 1);
+        } else if(player.getAttempts() == MAX_ATTEMPTS) {
             System.out.println("У " + playerName + " закончились попытки");
         }
         return guessed;
@@ -115,16 +111,11 @@ class GuessNumber {
 
     private boolean checkFreeAttempts() {
         for (Player player : players) {
-            if (player.getAttempts() != Player.MAX_ATTEMPTS) {
+            if (player.getAttempts() != MAX_ATTEMPTS) {
                 return true;
             }
         }
         return false;
-    }
-
-    private Player changePlayer(Player player) {
-        playerIndex = player == players[players.length - 1] ? 0 : playerIndex + 1;
-        return players[playerIndex];
     }
 
     private void printResult(boolean guessed, Player player) {
