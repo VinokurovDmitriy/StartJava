@@ -3,16 +3,22 @@ package com.startjava.graduation.bookshelf;
 public class BookshelfTest {
     public static void main(String[] args) {
         Bookshelf bookshelf = new Bookshelf();
-        while(OutInput.getAction() != 5) {
+        OutputInput outputInput = new OutputInput();
+        int action;
+        do {
             if(bookshelf.getCountBooks() > 0) {
-                System.out.println(111111111);
-                bookshelf.getBooks();
+                for(Book book : bookshelf.getBooks()) {
+                    System.out.println(book);
+                }
+                outputInput.printPressEnter();
             } else {
-                System.out.println(222222222);
-                OutInput.printWelcome();
+                outputInput.printWelcome();
             }
-            OutInput.showMenu();
+            outputInput.showMenu();
+            action = outputInput.getAction();
+            outputInput.doAction(action);
         }
+        while(action != 5);
 
     }
 }

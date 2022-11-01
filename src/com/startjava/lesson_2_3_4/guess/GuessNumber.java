@@ -7,13 +7,13 @@ import java.util.Scanner;
 
 class GuessNumber {
 
-    static int MAX_ATTEMPTS = 10;
+    static final int MAX_ATTEMPTS = 10;
     private final Scanner console = new Scanner(System.in);
     private Player[] players;
     private int round;
     private int hiddenNum;
 
-    GuessNumber(Player... args) {players = args;}
+    GuessNumber(Player... players) {this.players = players;}
 
     public Player[] getPlayers() {return Arrays.copyOf(players, players.length);}
 
@@ -21,9 +21,9 @@ class GuessNumber {
 
     public void start() {
         drawLots();
-        int MAX_ROUND = 3;
+        int maxRound = 3;
         int playerIndex = 0;
-        while (round < MAX_ROUND) {
+        while (round < maxRound) {
             System.out.println("Раунд " + (round + 1));
             hiddenNum = (new Random()).nextInt(Player.END_RANGE) + 1;
             Player currentPlayer = players[playerIndex];
@@ -39,7 +39,7 @@ class GuessNumber {
             } while (!guessed && freeAttempts);
             printResult(guessed, currentPlayer);
             printAttempts();
-            if (round == MAX_ROUND) {
+            if (round == maxRound) {
                 printWinners();
                 for (Player player : players) {
                     player.setWin(0);

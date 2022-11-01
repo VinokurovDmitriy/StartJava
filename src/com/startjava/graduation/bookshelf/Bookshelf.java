@@ -1,5 +1,7 @@
 package com.startjava.graduation.bookshelf;
 
+import java.util.Arrays;
+
 public class Bookshelf {
 
     private final int MAX_BOOKS = 10;

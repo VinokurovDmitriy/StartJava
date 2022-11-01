@@ -11,14 +11,19 @@ public class Book {
         this.name = name;
         this.year = year;
     }
+    @Override
+    public String toString() {
+        return """
+                ----------------------------------------------------------------------------
+                           %s                      %s                      %s               
+                ----------------------------------------------------------------------------
+                """.formatted(author, name, year);
 
-    public String getAuthor() {
-        return author;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getAuthor() {return author;}
+
+    public String getName() {return name;}
 
     public int getYear() {
         return year;

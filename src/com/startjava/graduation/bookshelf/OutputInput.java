@@ -2,10 +2,10 @@ package com.startjava.graduation.bookshelf;
 
 import java.util.Scanner;
 
-public class OutInput {
+public class OutputInput {
 
-    private static Scanner console = new Scanner(System.in);
-    public static void showMenu() {
+    private Scanner console = new Scanner(System.in);
+    public void showMenu() {
         System.out.println("""
                 1. Добавить книгу
                 2. Удалить книгу
@@ -15,35 +15,35 @@ public class OutInput {
                 """);
     }
 
-    public static void printWelcome() {
-        System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");
-    }
+    public void printWelcome() {System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");}
 
     public void printPressEnter() {
         System.out.println("Для продолжения работы нажмите Enter");
+        inputText();
     }
 
-    private String inputText() {
-        return console.nextLine();
-    }
+    private String inputText() {return console.nextLine();}
 
-    public static int getAction() {
+    public int getAction() {
+        System.out.print("Выберете действие: ");
         return console.nextInt();
     }
 
-    public void action(int choice) {
+    public void doAction(int choice) {
         Bookshelf bookshelf = new Bookshelf();
         boolean complete = true;
         String message = "";
         switch (choice) {
             case 1 -> {
-                System.out.println("Введите имя автора");
+                inputText();
+                System.out.print("Введите имя автора: ");
                 String author = inputText();
-                System.out.println("Введите название книги");
+                System.out.print("Введите название книги: ");
                 String name = inputText();
-                System.out.println("Введите год издания");
-                int year = getAction();
+                System.out.print("Введите год издания: ");
+                int year = console.nextInt();
                 complete = bookshelf.addBook(new Book(author, name, year));
+                bookshelf.getBooks();
                 message = "Книга успешно добавлена";
             }
             case 2 -> {
