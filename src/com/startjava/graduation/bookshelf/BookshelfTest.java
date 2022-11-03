@@ -7,18 +7,18 @@ public class BookshelfTest {
         int action;
         do {
             if(bookshelf.getCountBooks() > 0) {
-                for(Book book : bookshelf.getBooks()) {
-                    System.out.println(book);
-                }
+                int freeShelf = bookshelf.getCountFreeShelf();
+                outputInput.printInfo(bookshelf.getCountBooks(), freeShelf);
+                outputInput.printBooks(bookshelf.getBooks(), freeShelf);
                 outputInput.printPressEnter();
             } else {
                 outputInput.printWelcome();
             }
             outputInput.showMenu();
             action = outputInput.getAction();
-            outputInput.doAction(action);
+            outputInput.doAction(action, bookshelf);
         }
-        while(action != 5);
+        while(action != OutputInput.FIVE);
 
     }
 }
