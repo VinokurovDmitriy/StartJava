@@ -14,10 +14,11 @@ public class Book {
 
     @Override
     public String toString() {
+        String info = author + ", " + name + ", " + year;
         return """
-                |     %25.25s       %25.25s       %4.4s       |    
+                |%-80s|    
                 ----------------------------------------------------------------------------------
-                """.formatted(author, name, year);
+                """.formatted(info);
     }
 
     public String getName() {return name;}

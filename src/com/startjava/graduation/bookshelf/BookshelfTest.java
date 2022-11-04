@@ -6,11 +6,10 @@ public class BookshelfTest {
         OutputInput outputInput = new OutputInput();
         int action;
         do {
-            if(bookshelf.getCountBooks() > 0) {
+            if(bookshelf.getCount() > 0) {
                 int freeShelf = bookshelf.getCountFreeShelf();
-                outputInput.printInfo(bookshelf.getCountBooks(), freeShelf);
-                outputInput.printBooks(bookshelf.getBooks(), freeShelf);
                 outputInput.printPressEnter();
+                outputInput.printBooks(bookshelf.getBooks(),bookshelf.getCount(), freeShelf);
             } else {
                 outputInput.printWelcome();
             }

@@ -1,50 +1,50 @@
 package com.startjava.graduation.bookshelf;
 
+import java.util.Arrays;
+
 public class Bookshelf {
 
-    private final int MAX_BOOKS = 10;
-    private int countBooks;
-    private Book[] books = new Book[MAX_BOOKS];
+    private final int LIMIT = 10;
+    private int count;
+    private Book[] books = new Book[LIMIT];
 
-    public int getCountBooks() {return countBooks;}
+    public int getCount() {return count;}
 
-    public Book[] getBooks() {return books;}
+    public Book[] getBooks() {return Arrays.copyOf(books, LIMIT);}
 
-    public void addBook(Book book) {
-        if(countBooks < MAX_BOOKS) {
-            books[countBooks] = book;
-            countBooks++;
+    public void add(Book book) {
+        if(count < LIMIT) {
+            books[count] = book;
+            count++;
         }
     }
 
-    public boolean delBook(String name) {
-        for(int i = 0; i < countBooks; i++) {
+    public boolean del(String name) {
+        for(int i = 0; i < count; i++) {
             if(books[i].getName().equals(name)) {
-                System.arraycopy(books, i + 1, books, i, 1);
-                countBooks--;
+                System.arraycopy(books, i + 1, books, i, getCountFreeShelf() + 1);
+                count--;
                 return true;
             }
         }
         return false;
     }
 
-    public Book findBook(String name) {
-        for(Book book : books) {
-            if(book != null && book.getName().equals(name)) {
-                return book;
+    public Book find(String name) {
+        for(int i = 0; i < count; i++) {
+            if(books[i].getName().equals(name)) {
+                return books[i];
             }
          }
         return null;
     }
 
-    public void delAllBooks() {
-        books = new Book[MAX_BOOKS];
-        countBooks = 0;
+    public void delAll() {
+        Arrays.fill(books, null);
+        count = 0;
     }
 
-    public int getCountFreeShelf() {return MAX_BOOKS - countBooks;}
+    public int getCountFreeShelf() {return LIMIT - count;}
 
-    public static String getFreeShelf() {
-        return "|" + " ".repeat(80) + "|";
-    }
+    public String getFreeShelf() {return "|" + " ".repeat(80) + "|";}
 }

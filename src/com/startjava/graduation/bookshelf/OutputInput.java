@@ -9,24 +9,22 @@ public class OutputInput {
     static final int FOUR = 4;
     static final int FIVE = 5;
     private final Scanner console = new Scanner(System.in);
-    public void printInfo(int count, int free) {
-        System.out.printf("Шкаф содержит %s книги. Свободно — %s полок.%n", count, free);
+
+    public void printPressEnter() {
+        System.out.println("Для продолжения работы нажмите Enter");
+        console.nextLine();
     }
 
-    public void printBooks(Book[] books, int freeShelf) {
+    public void printBooks(Book[] books, int countBook, int freeShelf) {
+        System.out.printf("Шкаф содержит %s книги. Свободно — %s полок.%n", countBook, freeShelf);
         for(Book book : books) {
             if(book != null) {
                 System.out.print(book);
             }
         }
         if(freeShelf > 0) {
-            System.out.println(Bookshelf.getFreeShelf());
+            System.out.println((new Bookshelf()).getFreeShelf());
         }
-    }
-
-    public void printPressEnter() {
-        System.out.println("Для продолжения работы нажмите Enter");
-        console.nextLine();
     }
 
     public void printWelcome() {System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");}
@@ -60,27 +58,29 @@ public class OutputInput {
                     System.out.print("Введите год издания: ");
                     int year = console.nextInt();
                     console.nextLine();
-                    bookshelf.addBook(new Book(author, name, year));
+                    bookshelf.add(new Book(author, name, year));
                     message = "Книга успешно добавлена";
                 }
             }
             case TWO -> {
                 System.out.println("Введите название книги");
-                message = "Книга " + (bookshelf.delBook(console.nextLine()) ? "успешно удалена" : "не найдена");
+                message = "Книга " + (bookshelf.del(console.nextLine()) ? "успешно удалена" : "не найдена");
             }
             case TREE -> {
                 System.out.println("Введите название книги");
-                Book book = bookshelf.findBook(console.nextLine());
+                Book book = bookshelf.find(console.nextLine());
                 if(book == null) {
                     message = "Книга не найдена";
                 } else {
                     System.out.println(book);
                 }
             }
+            case FIVE -> {System.out.println("Выход из программы");}
             case FOUR -> {
                 message = "Все книги удалены";
-                bookshelf.delAllBooks();
+                bookshelf.delAll();
             }
+            default -> System.out.printf("Введите пункт меню от %s до %s%n", ONE, FIVE);
         }
         System.out.println(message);
     }
