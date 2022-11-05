@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class Bookshelf {
 
-    private final int LIMIT = 10;
+    private static final int LIMIT = 10;
     private int count;
-    private Book[] books = new Book[LIMIT];
+    private final Book[] books = new Book[LIMIT];
 
     public int getCount() {return count;}
 
@@ -20,31 +20,37 @@ public class Bookshelf {
     }
 
     public boolean del(String name) {
-        for(int i = 0; i < count; i++) {
-            if(books[i].getName().equals(name)) {
-                System.arraycopy(books, i + 1, books, i, getCountFreeShelf() + 1);
-                count--;
-                return true;
-            }
+        int index = getIndex(name);
+        if(index >= 0) {
+            count--;
+            System.arraycopy(books, index + 1, books, index, count - index);
+            return true;
         }
         return false;
     }
 
     public Book find(String name) {
-        for(int i = 0; i < count; i++) {
-            if(books[i].getName().equals(name)) {
-                return books[i];
-            }
-         }
+        int index = getIndex(name);
+        if(index >= 0) {
+            return books[index];
+        }
         return null;
     }
 
     public void delAll() {
-        Arrays.fill(books, null);
+        Arrays.fill(books, 0, count,null);
         count = 0;
     }
 
     public int getCountFreeShelf() {return LIMIT - count;}
 
-    public String getFreeShelf() {return "|" + " ".repeat(80) + "|";}
+    private int getIndex(String name) {
+        for(int i = 0; i < count; i++) {
+            if(books[i].getName().equals(name)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 }

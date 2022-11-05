@@ -17,7 +17,7 @@ public class BookshelfTest {
             action = outputInput.getAction();
             outputInput.doAction(action, bookshelf);
         }
-        while(action != OutputInput.FIVE);
+        while(action != OutputInput.EXIT);
 
     }
 }

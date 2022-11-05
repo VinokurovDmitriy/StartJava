@@ -12,14 +12,10 @@ public class Book {
         this.year = year;
     }
 
-    @Override
+    public String getName() {return name;}
+
     public String toString() {
         String info = author + ", " + name + ", " + year;
-        return """
-                |%-80s|    
-                ----------------------------------------------------------------------------------
-                """.formatted(info);
+        return "|%-80s|".formatted(info);
     }
-
-    public String getName() {return name;}
 }
