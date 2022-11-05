@@ -23,7 +23,10 @@ public class Bookshelf {
         int index = getIndex(name);
         if(index >= 0) {
             count--;
-            System.arraycopy(books, index + 1, books, index, count - index);
+            books[index] = null;
+            if(index < LIMIT - 1) {
+                System.arraycopy(books, index + 1, books, index, count - index);
+            }
             return true;
         }
         return false;
