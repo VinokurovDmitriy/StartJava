@@ -4,10 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class OutputInput {
-    static final int ADD = 1;
-    static final int DEL = 2;
-    static final int FIND = 3;
-    static final int DEL_ALL = 4;
+    private static final int ADD = 1;
+    private static final int DEL = 2;
+    private static final int FIND = 3;
+    private static final int DEL_ALL = 4;
     static final int EXIT = 5;
     private final Scanner console = new Scanner(System.in);
 
@@ -16,17 +16,15 @@ public class OutputInput {
         console.nextLine();
     }
 
-    public void printBooks(Book[] books, int countBook, int freeShelf) {
+    public void printBookshelf(Book[] books, int countBook, int freeShelf) {
         System.out.printf("Шкаф содержит %s книги. Свободно — %s полок.%n%n", countBook, freeShelf);
         for(Book book : books) {
-            if(book != null) {
-                printShelf(book);
-            }
+            printBook(book);
         }
         if(freeShelf > 0) {System.out.println("|" + " ".repeat(80) + "|");}
     }
 
-    public void printWelcome() {System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");}
+    public void printWelcomeMsg() {System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");}
 
     public void showMenu() {
         System.out.printf("""
@@ -39,19 +37,20 @@ public class OutputInput {
                 %n""", ADD, DEL, FIND, DEL_ALL, EXIT);
     }
 
-    public int getAction() {
+    public int selectAction(Bookshelf bookshelf) {
         int action = 0;
         System.out.print("Выберете действие: ");
         try {
             action = console.nextInt();
+            doAction(action, bookshelf);
         } catch (InputMismatchException ignored){}
         return action;
     }
 
-    public void doAction(int choice, Bookshelf bookshelf) {
+    public void doAction(int action, Bookshelf bookshelf) {
         String message = "";
         console.nextLine();
-        switch (choice) {
+        switch (action) {
             case ADD -> {
                 message = "Освободите место на полке для добавления новой книги";
                 if(bookshelf.getCountFreeShelf() > 0) {
@@ -76,7 +75,7 @@ public class OutputInput {
                 if(book == null) {
                     message = "Книга не найдена";
                 } else {
-                    printShelf(book);
+                    printBook(book);
                 }
             }
             case DEL_ALL -> {
@@ -89,10 +88,10 @@ public class OutputInput {
         System.out.println(message);
     }
 
-    void printShelf(Book book) {
+    void printBook(Book book) {
         System.out.printf("""
-                %s
-                %s
+                |%-80s|
+                |%s|
                 """.formatted(book, "-".repeat(80)));
     }
 }

@@ -9,15 +9,13 @@ public class BookshelfTest {
             if(bookshelf.getCount() > 0) {
                 int freeShelf = bookshelf.getCountFreeShelf();
                 outputInput.printPressEnter();
-                outputInput.printBooks(bookshelf.getBooks(),bookshelf.getCount(), freeShelf);
+                outputInput.printBookshelf(bookshelf.getBooks(), bookshelf.getCount(), freeShelf);
             } else {
-                outputInput.printWelcome();
+                outputInput.printWelcomeMsg();
             }
             outputInput.showMenu();
-            action = outputInput.getAction();
-            outputInput.doAction(action, bookshelf);
+            action = outputInput.selectAction(bookshelf);
         }
         while(action != OutputInput.EXIT);
-
     }
 }

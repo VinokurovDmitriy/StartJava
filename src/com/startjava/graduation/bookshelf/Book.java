@@ -15,7 +15,6 @@ public class Book {
     public String getName() {return name;}
 
     public String toString() {
-        String info = author + ", " + name + ", " + year;
-        return "|%-80s|".formatted(info);
+        return author + ", " + name + ", " + year;
     }
 }
