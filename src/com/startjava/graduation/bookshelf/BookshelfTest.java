@@ -15,7 +15,6 @@ public class BookshelfTest {
             }
             outputInput.showMenu();
             action = outputInput.selectAction(bookshelf);
-        }
-        while(action != OutputInput.EXIT);
+        } while (action != OutputInput.EXIT);
     }
 }
