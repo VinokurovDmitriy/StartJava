@@ -10,9 +10,7 @@ public class BookshelfTest {
                 int freeShelf = bookshelf.getCountFreeShelf();
                 outputInput.printPressEnter();
                 outputInput.printBookshelf(bookshelf.getBooks(), bookshelf.getCount(), freeShelf);
-            } else {
-                outputInput.printWelcomeMsg();
-            }
+            } else {outputInput.printWelcomeMsg();}
             outputInput.showMenu();
             action = outputInput.selectAction(bookshelf);
         } while (action != OutputInput.EXIT);
