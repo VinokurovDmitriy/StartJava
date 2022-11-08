@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Bookshelf {
 
+    private int length;
     private static final int LIMIT = 10;
     private int count;
     private final Book[] books = new Book[LIMIT];
@@ -12,10 +13,15 @@ public class Bookshelf {
 
     public Book[] getBooks() {return Arrays.copyOf(books, count);}
 
+    public int getLength() {
+        return length;
+    }
+
     public void add(Book book) {
         if(count < LIMIT) {
             books[count] = book;
             count++;
+            setLength();
         }
     }
 
@@ -27,6 +33,7 @@ public class Bookshelf {
                 System.arraycopy(books, index + 1, books, index, count - index - 1);
             }
             count--;
+            setLength();
             return true;
         }
         return false;
@@ -51,6 +58,17 @@ public class Bookshelf {
             }
         }
         return -1;
+    }
+
+    private void setLength() {
+        int length = 0;
+        for(int i = 0; i < count; i++) {
+            int shelfLength = books[i].toString().length();
+            if(shelfLength > length) {
+                length = shelfLength;
+            }
+        }
+        this.length = length;
     }
 
 }

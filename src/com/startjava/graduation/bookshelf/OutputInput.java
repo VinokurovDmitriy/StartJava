@@ -9,6 +9,7 @@ public class OutputInput {
     private static final int FIND = 3;
     private static final int DEL_ALL = 4;
     static final int EXIT = 5;
+
     private final Scanner console = new Scanner(System.in);
 
     public void printPressEnter() {
@@ -16,12 +17,14 @@ public class OutputInput {
         console.nextLine();
     }
 
-    public void printBookshelf(Book[] books, int countBook, int freeShelf) {
-        System.out.printf("Шкаф содержит %s книги. Свободно — %s полок.%n%n", countBook, freeShelf);
-        for(Book book : books) {
-            printBook(book);
+    public void printBookshelf(Bookshelf bookshelf) {
+        int freeShelf = bookshelf.getCountFreeShelf();
+        int length = bookshelf.getLength();
+        System.out.printf("Шкаф содержит %s книги. Свободно — %s полок.%n%n", bookshelf.getCount(), freeShelf);
+        for(Book book : bookshelf.getBooks()) {
+            printBook(book, length);
         }
-        if(freeShelf > 0) {System.out.println("|" + " ".repeat(80) + "|");}
+        if(freeShelf > 0) {System.out.println("|" + " ".repeat(length) + "|");}
     }
 
     public void printWelcomeMsg() {System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");}
@@ -43,7 +46,7 @@ public class OutputInput {
         try {
             action = console.nextInt();
             doAction(action, bookshelf);
-        } catch (InputMismatchException ignored){}
+        } catch (InputMismatchException ignored) {}
         return action;
     }
 
@@ -75,7 +78,7 @@ public class OutputInput {
                 if(book == null) {
                     message = "Книга не найдена";
                 } else {
-                    printBook(book);
+                    printBook(book, bookshelf.getLength());
                 }
             }
             case DEL_ALL -> {
@@ -88,10 +91,9 @@ public class OutputInput {
         System.out.println(message);
     }
 
-    void printBook(Book book) {
-        System.out.printf("""
-                |%-80s|
-                |%s|
-                """.formatted(book, "-".repeat(80)));
+
+    private void printBook(Book book, int length) {
+        System.out.printf( "|%" + (-length) + "s|%n|" + "-".repeat(length) + "|\n", book);
     }
+
 }
